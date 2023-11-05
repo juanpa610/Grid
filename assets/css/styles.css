@@ -1,0 +1,43 @@
+*{margin: 0; padding: 0; box-sizing: content-box;}
+
+body {
+    background: rgb(99, 95, 95);
+}
+
+.container {
+    height: 100vh;
+    background: lightsalmon;
+    outline: 2px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*<-- esto indica cuantas columnas va tener mi container, se pueden mezclar con px vw vh rem em  % o fr */
+    grid-template-columns: repeat(2, 1fr 2fr ); /*<-- con esto estoy creando un intercalado de 12 columnas donde es un patro de una si otra no: 20px 50px 20px 50px... */
+    /*! ↑↑↑↑ esto no solo aplica para columnas si no que tambien para las filas */
+    /*grid-template-rows: 100px; /*<-- esto indica que el cotainer va a tener 1 fila y su alto va a ser de 100px */
+    grid-auto-rows: 50px; /*<-- esto indica de cuanto es el alto de las filas que se creen automaticamente */
+    grid-template-rows: repeat(2, minmax(100px, 1fr)); /*<-- Esto indica que van a ser 2 filas donde cada una va a tener un minimo de 100px y su maximo va a ser de 1fr: 
+    /* osea esto quiere decir que cuando su contenedor sea de 200px cada fila va atener un alto de 100px pero cuando se sobrepase este valor cada fila va a ocupar 1fr 
+    /* que para esto seria que si el contenedor mide 400px 1/2 filas va a ocupar 200px */
+    /*! ↑↑↑↑ esto no solo aplica para filas si no que tambien para las columnas */
+    grid-auto-flow: row; /*<-- esta propiedad indica como se va a distribuir el contenido automatico, por defecto es row pero podemos configurarlo en columns o dese */
+}
+
+/*  ? Para el grid-template-columns y el grid-template-rows, se va apoder usar el repeat(2, 1fr) que para este ejemplo anterior se van a repetir  */ 
+/*  ? 2 columnas o filas de 1 fraccion se puede usar % px vh vw rem em, y algo que tambien podemos hacer es por ejemplo tener un   */ 
+/*  ? grid-template-columns: de 25px y un repeat(3, 20%); que lo que hara sera que  va a crear una columna de 25px y aparate otras   */ 
+/*  ? 3 columnas del 20% del container en el que este, de igual manera tambien se podria tener algo asi: grid-template-columns: 1fr repeat(5, 100px) 1fr;   */ 
+
+.container div {
+    background-color: lightblue;
+    outline: 1px solid ;
+}
+.container div:first-child {
+    background-color: lightblue;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.container div:last-child {
+    background-color: lightblue;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
